@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UTS_72210454.HomePage"
+             xmlns:viewModel="clr-namespace:UTS_72210454.ViewModels"
+             xmlns:data="clr-namespace:UTS_72210454.Data"
+             xmlns:style="clr-namespace:UTS_72210454"
+             x:DataType="viewModel:HomePageViewModel"
+             Title="Home">
+
+
+    <Grid>
+        <!-- Define the grid rows -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- SearchBar row -->
+            <RowDefinition Height="*"/>
+            <!-- CollectionView row -->
+        </Grid.RowDefinitions>
+
+        <!-- SearchBar Control -->
+        <SearchBar Grid.Row="0"
+                   Placeholder="Search by Category or Course Name"
+                   Margin="10"
+                   Text="{Binding SearchText, Mode=TwoWay}"/>
+
+        <RefreshView Grid.Row="1"
+             IsRefreshing="{Binding IsRefreshing}"
+             Command="{Binding LoadDataCommand}">
+            <CollectionView Margin="30,20,30,30"
+                    ItemsSource="{Binding FilteredGroupedCourses}"
+                    IsGrouped="True"
+                    SelectionMode="Single">
+                <!-- Group Header Template for displaying the category name -->
+                <CollectionView.GroupHeaderTemplate>
+                    <DataTemplate x:DataType="data:GroupedCourse">
+                        <Label Text="{Binding CategoryName}" 
+                       FontSize="Large" 
+                       FontAttributes="Bold" 
+                       Padding="10, 5"/>
+                    </DataTemplate>
+                </CollectionView.GroupHeaderTemplate>
+
+                <!-- Define how items are laid out -->
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="20"/>
+                </CollectionView.ItemsLayout>
+
+                <!-- Define the template for individual course items -->
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="data:Courses">
+                        <VerticalStackLayout Padding="15, 10" Margin="10,5,10,5">
+                            <Label Text="{Binding name}" FontSize="Medium" Margin="0,0,0,20"/>
+                            <Label Text="{Binding imageName, StringFormat='Image Name: {0}'}"/>
+                            <Label Text="{Binding duration, StringFormat='Duration: {0}'}"/>
+                            <Label Text="{Binding description, StringFormat='Description: {0}'}"/>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UTS_72210454.LoginPage"
+             xmlns:style="clr-namespace:UTS_72210454"
+             Title="Login">
+    <Grid Padding="30" RowDefinitions="Auto, Auto, Auto, *, Auto, Auto" ColumnDefinitions="*,*" RowSpacing="15" ColumnSpacing="10">
+        <Label Text="Login"
+               Grid.ColumnSpan="2"
+               FontSize="{x:Static Member=style:Style.LoginTitleFontSize}"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Grid.Row="0" />
+
+        <Label Text="Username:"
+               FontSize="{x:Static Member=style:Style.LoginFontSize}"
+               VerticalOptions="Center"
+               HorizontalOptions="End"
+               Grid.Row="1" Grid.Column="0" />
+
+        <Entry x:Name="usernameEntry"
+                Placeholder="Enter your username"
+                FontSize="{x:Static Member=style:Style.LoginFontSize}"
+                HorizontalOptions="FillAndExpand"
+                Grid.Row="1" Grid.Column="1" />
+
+        <Label Text="Password:"
+                FontSize="{x:Static Member=style:Style.LoginFontSize}"
+                VerticalOptions="Center"
+                HorizontalOptions="End"
+               Grid.ColumnSpan="1"
+                Grid.Row="2" Grid.Column="0" />
+
+        <Entry x:Name="passwordEntry"
+                Placeholder="Enter your password"
+                FontSize="{x:Static Member=style:Style.LoginFontSize}"
+                HorizontalOptions="FillAndExpand"
+                IsPassword="True"
+               Grid.ColumnSpan="1"
+                Grid.Row="2" Grid.Column="1" />
+
+        <Button Text="Login"
+                FontSize="{x:Static Member=style:Style.LoginFontSize}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Clicked="OnLoginClicked"
+                Grid.Row="3" Grid.ColumnSpan="2" />
+
+        <Label x:Name="MessageLabel"
+                FontSize="{x:Static Member=style:Style.LoginWarningFontSize}"
+               TextColor="{x:Static Member=style:Style.LoginWarningColor}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Grid.Row="4" Grid.ColumnSpan="2" 
+               IsVisible="False"/>
+    </Grid>
+</ContentPage>

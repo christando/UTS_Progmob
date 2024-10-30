@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="UTS_72210454.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:UTS_72210454"
+    Shell.FlyoutBehavior="Flyout"
+    Title="UTS_72210454"
+    FlyoutIcon="list.svg">
+
+    <FlyoutItem Title="Home" Icon="home.svg">
+        <ShellContent ContentTemplate="{DataTemplate local:HomePage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Course" Icon="bookhalf.svg">
+        <ShellContent ContentTemplate="{DataTemplate local:CoursePage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Category" Icon="book.svg">
+        <ShellContent ContentTemplate="{DataTemplate local:CategoryPage}" />
+    </FlyoutItem>
+
+    <TabBar>
+        <Tab>
+            <ShellContent Route="addCategory" ContentTemplate="{DataTemplate local:AddCategory}" />
+            <ShellContent Route="addCourse" ContentTemplate="{DataTemplate local:AddCourse}" />
+        </Tab>
+    </TabBar>
+
+    
+
+</Shell>

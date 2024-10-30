@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UTS_72210454.AddCategory"
+             xmlns:viewModel="clr-namespace:UTS_72210454.ViewModels"
+             x:DataType="viewModel:AddCategoryViewModel">
+
+    <ContentPage.Resources>
+        <Color x:Key="DelColor">Red</Color>
+        <Color x:Key="SvColor">LightGreen</Color>
+        <Color x:Key="CancelColor">Yellow</Color>
+    </ContentPage.Resources>
+    
+    <Grid RowDefinitions="*,Auto" ColumnDefinitions="*,*,*" ColumnSpacing="5" Padding="10">
+        <TableView Intent="Data" Grid.Row="0" Grid.ColumnSpan="3">
+            <TableRoot>
+                <TableSection Title="Add New Category">
+                    <EntryCell Label="CategoryID :" x:Name="categoryId" Text="{Binding CategoryId}" IsEnabled="False" />
+                    <!-- Name input -->
+                    <EntryCell Label="Name :" x:Name="name"  Text="{Binding Name}" Placeholder="Enter Category Name" />
+                    <!-- Description input -->
+                    <EntryCell Label="Description :" x:Name="description" Text="{Binding Description}" Placeholder="Enter Description" />
+                </TableSection>
+            </TableRoot>
+        </TableView>
+
+        <Button Text="Save" Grid.Row="1" Grid.Column="0" BackgroundColor="{StaticResource SvColor}" Command="{Binding SaveDataCommand}" Margin="20,0"/>
+        <Button Text="Delete" Grid.Row="1" Grid.Column="1" BackgroundColor="{StaticResource DelColor}" Command="{Binding deleteCategoryCommand}"/>
+        <Button Text="Cancel" Grid.Row="1" Grid.Column="2" BackgroundColor="{StaticResource CancelColor}" Command="{Binding DoneEditCommand}" Margin="20,0"/>
+
+    </Grid>
+</ContentPage>

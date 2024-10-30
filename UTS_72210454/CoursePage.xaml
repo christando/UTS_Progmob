@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UTS_72210454.CoursePage"
+             xmlns:viewModel="clr-namespace:UTS_72210454.ViewModels"
+             xmlns:data="clr-namespace:UTS_72210454.Data"
+             xmlns:style="clr-namespace:UTS_72210454"
+             x:DataType="viewModel:CoursesViewModel"
+             Title="Course">
+
+    <Grid>
+
+        <!-- Main content: RefreshView and CollectionView -->
+        <RefreshView Grid.Row="0"
+                     IsRefreshing="{Binding IsRefreshing}"
+                     x:Name="refreshView"
+                     Command="{Binding LoadDataCommand}">
+            <CollectionView Margin="30, 20, 30, 30"
+                            ItemsSource="{Binding Courses}"
+                            SelectedItem="{Binding SelectedCourse, Mode=TwoWay}"
+                            SelectionChangedCommand="{Binding CoursesSelectedCommand}"
+                            SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="{x:Static Member=style:Style.CoOrientation}" ItemSpacing="20"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="data:Courses">
+                        <VerticalStackLayout Padding="15, 10" Margin="10, 5, 10, 5">
+                            <Label Text="{Binding name, StringFormat='Name: {}'}" FontSize="Large" Margin="0, 0, 0, 20"/>
+                            <Label Text="{Binding imageName, StringFormat='Image Name: {0}'}"/>
+                            <Label Text="{Binding duration, StringFormat='Duration: {0}'}"/>
+                            <Label Text="{Binding description, StringFormat='Description: {0}'}"/>
+                            <Label Text="{Binding Category.name, StringFormat='Category: {0}'}"/>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+        <!-- Floating Button -->
+        <Button Text="+" 
+                BackgroundColor="{x:Static Member=style:Style.btnColor}"
+                TextColor="{x:Static Member=style:Style.btnTextColor}"
+                FontAttributes="Bold"
+                FontSize="Large"
+                CornerRadius="30"
+                WidthRequest="{x:Static Member=style:Style.btnWReq}"
+                HeightRequest="{x:Static Member=style:Style.btnHReq}"
+                Command="{Binding AddNewCourseCommand}"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                Margin="{x:Static Member=style:Style.btnMargin}"/>
+    </Grid>
+</ContentPage>
