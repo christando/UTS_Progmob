@@ -79,6 +79,22 @@ namespace UTS_72210454.ViewModels
         }
 
         [RelayCommand]
+        async Task CoursesSelected()
+        {
+            if (SelectedCourse == null)
+                return;
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                { "Courses", SelectedCourse }
+            };
+
+            await Shell.Current.GoToAsync("detailCourseHome", navigationParameter);
+
+            MainThread.BeginInvokeOnMainThread(() => SelectedCourse = null);
+        }
+
+        [RelayCommand]
         partial void OnSearchTextChanged(string searchText)
         {
             if (string.IsNullOrWhiteSpace(searchText))

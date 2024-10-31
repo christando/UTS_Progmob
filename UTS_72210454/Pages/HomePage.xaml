@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="UTS_72210454.HomePage"
+             x:Class="UTS_72210454.Pages.HomePage"
              xmlns:viewModel="clr-namespace:UTS_72210454.ViewModels"
              xmlns:data="clr-namespace:UTS_72210454.Data"
              xmlns:style="clr-namespace:UTS_72210454"
@@ -29,6 +29,8 @@
              Command="{Binding LoadDataCommand}">
             <CollectionView Margin="30,20,30,30"
                     ItemsSource="{Binding FilteredGroupedCourses}"
+                    SelectedItem="{Binding SelectedCourse, Mode=TwoWay}"
+                    SelectionChangedCommand="{Binding CoursesSelectedCommand}"
                     IsGrouped="True"
                     SelectionMode="Single">
                 <!-- Group Header Template for displaying the category name -->

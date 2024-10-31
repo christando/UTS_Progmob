@@ -4,29 +4,32 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:UTS_72210454"
+    xmlns:pages="clr-namespace:UTS_72210454.Pages"
     Shell.FlyoutBehavior="Flyout"
-    Title="UTS_72210454"
-    FlyoutIcon="list.svg">
+    Title="UTS_72210454">
 
-    <FlyoutItem Title="Home" Icon="home.svg">
-        <ShellContent ContentTemplate="{DataTemplate local:HomePage}" />
+    <!--Icon by UIcons-->
+
+    <FlyoutItem Title="Home" Icon="whome.png">
+        <ShellContent ContentTemplate="{DataTemplate pages:HomePage}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Course" Icon="bookhalf.svg">
-        <ShellContent ContentTemplate="{DataTemplate local:CoursePage}" />
+    <FlyoutItem Title="Course" Icon="wcourse.png">
+        <ShellContent ContentTemplate="{DataTemplate pages:CoursePage}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Category" Icon="book.svg">
-        <ShellContent ContentTemplate="{DataTemplate local:CategoryPage}" />
+    <FlyoutItem Title="Category" Icon="wcat.png">
+        <ShellContent ContentTemplate="{DataTemplate pages:CategoryPage}" />
     </FlyoutItem>
 
     <TabBar>
         <Tab>
-            <ShellContent Route="addCategory" ContentTemplate="{DataTemplate local:AddCategory}" />
-            <ShellContent Route="addCourse" ContentTemplate="{DataTemplate local:AddCourse}" />
+            <ShellContent Route="addCategory" ContentTemplate="{DataTemplate pages:AddCategory}" />
+            <ShellContent Route="addCourse" ContentTemplate="{DataTemplate pages:AddCourse}" />
+            <ShellContent Route="detailCourseHome" ContentTemplate="{DataTemplate pages:DetailCourseHome}" />
         </Tab>
     </TabBar>
 
-    
 
+    <MenuItem Text="Log Out" IconImageSource="logout.png"  Clicked="OnLogOutClicked" />
 </Shell>

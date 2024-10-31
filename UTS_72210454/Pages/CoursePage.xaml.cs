@@ -3,7 +3,7 @@ using UTS_72210454.ViewModels;
 using System;
 using Microsoft.Maui.Controls;
 
-namespace UTS_72210454;
+namespace UTS_72210454.Pages;
 
 public partial class CoursePage : ContentPage
 {

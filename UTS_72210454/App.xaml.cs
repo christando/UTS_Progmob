@@ -1,4 +1,5 @@
 ﻿using UTS_72210454.Data;
+using UTS_72210454.Pages;
 
 namespace UTS_72210454
 {
@@ -10,9 +11,9 @@ namespace UTS_72210454
 
             DependencyService.Register<ApiService>();
 
-            MainPage = new AppShell();
+            //MainPage = new AppShell();
 
-            //MainPage = new NavigationPage(new LoginPage());
+            MainPage = new NavigationPage(new LoginPage());
         }
     }
 }

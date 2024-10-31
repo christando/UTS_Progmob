@@ -1,7 +1,7 @@
 using UTS_72210454.Data;
 using UTS_72210454.ViewModels;
 
-namespace UTS_72210454;
+namespace UTS_72210454.Pages;
 
 [QueryProperty("PartToDisplay", "Categories")]
 

@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using UTS_72210454.Pages;
 
 namespace UTS_72210454
 {
@@ -10,9 +11,17 @@ namespace UTS_72210454
 
             Routing.RegisterRoute("addCategory", typeof(AddCategory));
             Routing.RegisterRoute("addCourse", typeof(AddCourse));
+            Routing.RegisterRoute("detailCourseHome", typeof(DetailCourseHome));
 
-
+            Routing.RegisterRoute("LoginPage", typeof(LoginPage));
 
         }
+
+        private async void OnLogOutClicked(object sender, EventArgs e)
+        {
+            // Navigate to LoginPage
+            Application.Current.MainPage = new LoginPage();
+        }
+
     }
 }

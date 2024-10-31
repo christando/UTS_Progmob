@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UTS_72210454.Pages.DetailCourseHome"
+             Title="DetailCourseHome">
+    <ScrollView>
+        <StackLayout Padding="20">
+
+            <!-- Course Name -->
+            <Label Text="{Binding Name}" 
+                   FontSize="Title" 
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,20" />
+
+            <Grid ColumnDefinitions="2*,3*" Padding="0,10,0,20">
+                <!-- Label to display Image Name (String) -->
+                <Label Text="{Binding ImageName}" 
+                       FontSize="16"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       BackgroundColor="LightGray"
+                       HeightRequest="150"
+                       WidthRequest="150"
+                       Grid.Column="0" />
+
+                <!-- Duration and Image Name Info -->
+                <StackLayout Grid.Column="1" VerticalOptions="Center">
+                    <Label Text="Duration :" 
+                           FontSize="18"
+                           FontAttributes="Bold" />
+                    <Label Text="{Binding Duration}" 
+                           FontSize="16" 
+                           Margin="0,0,0,10"/>
+
+                    <Label Text="Category :" 
+                           FontSize="18"
+                           FontAttributes="Bold" />
+                    <Label Text="{Binding CategoryName}"
+                           FontSize="16" />
+                </StackLayout>
+            </Grid>
+
+            <!-- Description Section -->
+            <Label Text="Description" 
+                   FontSize="20" 
+                   FontAttributes="Bold" 
+                   Margin="0,0,0,10"/>
+            <Label Text="{Binding Description}" 
+                   FontSize="16" 
+                   LineBreakMode="WordWrap"
+                   TextColor="Gray" />
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

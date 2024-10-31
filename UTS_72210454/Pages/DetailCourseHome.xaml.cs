@@ -1,23 +1,22 @@
 using UTS_72210454.Data;
 using UTS_72210454.ViewModels;
 
-namespace UTS_72210454;
+namespace UTS_72210454.Pages;
 
 [QueryProperty("PartToDisplay", "Courses")]
 
-public partial class AddCourse : ContentPage
+public partial class DetailCourseHome : ContentPage
 {
 
-    AddCourseViewModel viewModel;
-    public AddCourse()
+    DetailHomeViewModel viewModel;
+    public DetailCourseHome()
 	{
 		InitializeComponent();
-		viewModel = new AddCourseViewModel();
-		BindingContext = viewModel;
+        viewModel = new DetailHomeViewModel();
+        BindingContext = viewModel;
     }
-
+    
     Courses _PartToDisplay;
-
     public Courses PartToDisplay
     {
         get => _PartToDisplay;
@@ -35,7 +34,8 @@ public partial class AddCourse : ContentPage
                 viewModel.ImageName = _PartToDisplay.imageName;
                 viewModel.Duration = _PartToDisplay.duration;
                 viewModel.Description = _PartToDisplay.description;
-                viewModel.CategoryId = _PartToDisplay.Category.categoryId;
+                viewModel.CategoryName = _PartToDisplay.Category.name;
+                
             }
 
         }

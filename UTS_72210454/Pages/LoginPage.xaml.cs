@@ -1,5 +1,5 @@
 
-namespace UTS_72210454;
+namespace UTS_72210454.Pages;
 
 public partial class LoginPage : ContentPage
 {
@@ -13,7 +13,7 @@ public partial class LoginPage : ContentPage
 		string username = usernameEntry.Text;
 		string password = passwordEntry.Text;
 
-		if (username == "admin" && password == "password")
+		if (username == "admin" && password == "admin")
 		{
             Application.Current.MainPage = new AppShell();
         }
