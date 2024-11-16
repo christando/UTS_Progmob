@@ -86,18 +86,17 @@ namespace UTS_72210454.ViewModels
         [RelayCommand]
         async Task updateCourse()
         {
-            var category = await _ApiService.GetById(CategoryId);
-            Courses course = new()
+            var Updatecourse = new UpdateCourse
             {
                 courseId = CourseId,
                 name = Name,
                 imageName = ImageName,
                 duration = Duration,
                 description = Description,
-                Category = category
+                categoryId = CategoryId
             };
 
-            await _ApiService.UpdateCourse(course);
+            await _ApiService.UpdateCourse(Updatecourse);
             WeakReferenceMessenger.Default.Send(new RefreshMessage(true));
             await Shell.Current.GoToAsync("..");
         }

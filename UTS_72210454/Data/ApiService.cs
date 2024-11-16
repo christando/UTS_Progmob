@@ -136,7 +136,7 @@ namespace UTS_72210454.Data
             }
         }
 
-        public async Task<Courses> UpdateCourse(Courses course)
+        public async Task<Courses> UpdateCourse(UpdateCourse course)
         {
             var jsonCategory = JsonConvert.SerializeObject(course);
             var content = new StringContent(jsonCategory, Encoding.UTF8, "application/json");
@@ -177,6 +177,21 @@ namespace UTS_72210454.Data
             return groupedCourses;
         }
 
-        
+        public async Task<List<Courses>> GetByName(string name)
+        {
+            var response = await _httpClient.GetAsync($"api/Courses/search/{name}");
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                var course = JsonConvert.DeserializeObject<List<Courses>>(json);
+                return course;
+            }
+            else
+            {
+                throw new Exception($"Failed to get course: {response.ReasonPhrase}");
+            }
+        }
+
+
     }
 }

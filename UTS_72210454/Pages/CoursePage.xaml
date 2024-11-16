@@ -9,9 +9,22 @@
              Title="Course">
 
     <Grid>
+        <!-- Define the grid rows -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- SearchBar row -->
+            <RowDefinition Height="*"/>
+            <!-- CollectionView row -->
+        </Grid.RowDefinitions>
+        
+        <SearchBar Grid.Row="0"
+           Placeholder="Search Course"
+           Margin="10"
+           Text="{Binding SearchText, Mode=TwoWay}"
+           SearchButtonPressed="OnSearchButtonPressed"/>
 
         <!-- Main content: RefreshView and CollectionView -->
-        <RefreshView Grid.Row="0"
+        <RefreshView Grid.Row="1"
                      IsRefreshing="{Binding IsRefreshing}"
                      x:Name="refreshView"
                      Command="{Binding LoadDataCommand}">
@@ -38,17 +51,19 @@
         </RefreshView>
 
         <!-- Floating Button -->
-        <Button Text="+" 
-                BackgroundColor="{x:Static Member=style:Style.btnColor}"
-                TextColor="{x:Static Member=style:Style.btnTextColor}"
-                FontAttributes="Bold"
-                FontSize="Large"
-                CornerRadius="30"
-                WidthRequest="{x:Static Member=style:Style.btnWReq}"
-                HeightRequest="{x:Static Member=style:Style.btnHReq}"
-                Command="{Binding AddNewCourseCommand}"
-                VerticalOptions="End"
-                HorizontalOptions="End"
-                Margin="{x:Static Member=style:Style.btnMargin}"/>
+        <AbsoluteLayout Grid.RowSpan="2">
+            <Button Text="+"
+                    BackgroundColor="{x:Static Member=style:Style.btnColor}"
+                    TextColor="{x:Static Member=style:Style.btnTextColor}"
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    CornerRadius="30"
+                    WidthRequest="{x:Static Member=style:Style.btnWReq}"
+                    HeightRequest="{x:Static Member=style:Style.btnHReq}"
+                    Command="{Binding AddNewCourseCommand}"
+                    AbsoluteLayout.LayoutBounds="1, 1, AutoSize, AutoSize"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    Margin="20" />
+        </AbsoluteLayout>
     </Grid>
 </ContentPage>

@@ -25,6 +25,9 @@ namespace UTS_72210454.ViewModels
         [ObservableProperty]
         Courses _selectedCourse;
 
+        [ObservableProperty]
+        string _searchText;
+
         public CoursesViewModel()
         {
             _apiService = new ApiService();
@@ -85,6 +88,40 @@ namespace UTS_72210454.ViewModels
         async Task AddNewCourse()
         {
             await Shell.Current.GoToAsync("addCourse");
+        }
+
+        [RelayCommand]
+        async Task SearchCourse(string Cname)
+        {
+            if (IsBusy || string.IsNullOrWhiteSpace(Cname))
+                return;
+
+            try
+            {
+                IsBusy = true;
+
+                // Fetch filtered courses based on the name
+                var filteredCourses = await _apiService.GetByName(Cname);
+
+                // Update the Courses ObservableCollection
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    Courses.Clear();
+                    foreach (var course in filteredCourses)
+                    {
+                        Courses.Add(course);
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the error appropriately
+                Console.WriteLine($"Error searching for courses: {ex.Message}");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
     }
 }

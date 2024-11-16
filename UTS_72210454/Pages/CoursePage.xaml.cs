@@ -14,6 +14,13 @@ public partial class CoursePage : ContentPage
 		InitializeComponent();
         _ApiService = new ApiService();
         BindingContext = new CoursesViewModel();
-        
+    }
+    private void OnSearchButtonPressed(object sender, EventArgs e)
+    {
+        var viewModel = BindingContext as CoursesViewModel;
+        if (viewModel != null && !string.IsNullOrWhiteSpace(viewModel.SearchText))
+        {
+            viewModel.SearchCourseCommand.Execute(viewModel.SearchText);
+        }
     }
 }
