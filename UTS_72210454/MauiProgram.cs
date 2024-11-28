@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using UTS_72210454.Data;
 
 namespace UTS_72210454
 {
@@ -14,11 +15,8 @@ namespace UTS_72210454
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
-
-#if DEBUG
-    		builder.Logging.AddDebug();
-#endif
-
+            string dbPath = FileAccessHelper.GetLocalFilePath("Categories.db3");
+            builder.Services.AddSingleton<DatabaseHelper>(s => ActivatorUtilities.CreateInstance<DatabaseHelper>(s, dbPath));
             return builder.Build();
         }
     }

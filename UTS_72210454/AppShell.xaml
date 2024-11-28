@@ -21,12 +21,16 @@
     <FlyoutItem Title="Category" Icon="wcat.png">
         <ShellContent ContentTemplate="{DataTemplate pages:CategoryPage}" />
     </FlyoutItem>
+    <FlyoutItem Title="Category SQLite" Icon="wcat.png">
+        <ShellContent ContentTemplate="{DataTemplate pages:CategoryLitePage}" />
+    </FlyoutItem>
 
     <TabBar>
         <Tab>
             <ShellContent Route="addCategory" ContentTemplate="{DataTemplate pages:AddCategory}" />
             <ShellContent Route="addCourse" ContentTemplate="{DataTemplate pages:AddCourse}" />
             <ShellContent Route="detailCourseHome" ContentTemplate="{DataTemplate pages:DetailCourseHome}" />
+            <ShellContent Route="addCategoryLite" ContentTemplate="{DataTemplate pages:AddCategoryLite}" />
         </Tab>
     </TabBar>
 

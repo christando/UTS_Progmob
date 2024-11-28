@@ -12,6 +12,7 @@ namespace UTS_72210454
             Routing.RegisterRoute("addCategory", typeof(AddCategory));
             Routing.RegisterRoute("addCourse", typeof(AddCourse));
             Routing.RegisterRoute("detailCourseHome", typeof(DetailCourseHome));
+            Routing.RegisterRoute("addCategoryLite", typeof(AddCategoryLite));
 
             Routing.RegisterRoute("LoginPage", typeof(LoginPage));
 

@@ -5,13 +5,13 @@ namespace UTS_72210454.Pages;
 
 [QueryProperty("PartToDisplay", "Categories")]
 
-public partial class AddCategory : ContentPage
+public partial class AddCategoryLite : ContentPage
 {
-    AddCategoryViewModel viewModel;
-    public AddCategory()
+    AddCategoryLiteViewModel viewModel;
+    public AddCategoryLite()
 	{
-		InitializeComponent();
-        viewModel = new AddCategoryViewModel();
+	InitializeComponent();
+		viewModel = new AddCategoryLiteViewModel();
         BindingContext = viewModel;
     }
     Categories _PartToDisplay;

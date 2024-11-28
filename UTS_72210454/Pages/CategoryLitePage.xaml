@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UTS_72210454.Pages.CategoryLitePage"
+             xmlns:viewModel="clr-namespace:UTS_72210454.ViewModels"
+             xmlns:data="clr-namespace:UTS_72210454.Data"
+             xmlns:style="clr-namespace:UTS_72210454"
+             x:DataType="viewModel:CategoryLiteViewModel"
+             Title="CategoryLitePage">
+    <Grid>
+
+        <!-- Main Content with RefreshView and CollectionView -->
+        <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                     x:Name="refreshView"
+                     Command="{Binding LoadDataCommand}">
+            <CollectionView Margin="30,20,30,30"
+                            ItemsSource="{Binding Categories}"
+                            SelectedItem="{Binding SelectedCategory, Mode=TwoWay}"
+                            SelectionChangedCommand="{Binding CategoriesSelectedCommand}"
+                            SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="20"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="data:Categories">
+                        <VerticalStackLayout Padding="15, 10" Margin="10,5,10,5">
+                            <Label Text="{Binding name, StringFormat='Category Name: {}'}" FontSize="Title" Margin="0,0,0,20"/>
+                            <Label Text="{Binding description, StringFormat='Description : {0}'}"/>
+                            <Label Text="{Binding categoryId, StringFormat='id : {0}'}"/>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+        <!-- Floating Button -->
+        <Button Text="+" 
+                BackgroundColor="{x:Static Member=style:Style.btnColor}"
+                TextColor="{x:Static Member=style:Style.btnTextColor}" 
+                FontAttributes="Bold"
+                FontSize="Large"
+                CornerRadius="30"
+                WidthRequest="{x:Static Member=style:Style.btnWReq}"
+                HeightRequest="{x:Static Member=style:Style.btnHReq}"
+                Command="{Binding AddNewCategoryCommand}"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                Margin="{x:Static Member=style:Style.btnMargin}"/>
+
+    </Grid>
+</ContentPage>

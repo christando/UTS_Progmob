@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="UTS_72210454.Pages.AddCategory"
+             x:Class="UTS_72210454.Pages.AddCategoryLite"
              xmlns:viewModel="clr-namespace:UTS_72210454.ViewModels"
-             x:DataType="viewModel:AddCategoryViewModel"
-             Title="AddCategory">
+             x:DataType="viewModel:AddCategoryLiteViewModel">
     <ContentPage.Resources>
         <Color x:Key="DelColor">Red</Color>
         <Color x:Key="SvColor">LightGreen</Color>

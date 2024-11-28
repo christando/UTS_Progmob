@@ -1,11 +1,16 @@
-﻿using UTS_72210454.Data;
+﻿using Android.OS.Strictmode;
+using UTS_72210454.Data;
 using UTS_72210454.Pages;
 
 namespace UTS_72210454
 {
     public partial class App : Application
     {
-        public App()
+        private static ApiService _apiService = new ApiService();
+        
+        public static DatabaseHelper CategoryRepo { get; private set; }
+
+        public App(DatabaseHelper repo)
         {
             InitializeComponent();
 
@@ -14,6 +19,8 @@ namespace UTS_72210454
             //MainPage = new AppShell();
 
             MainPage = new NavigationPage(new LoginPage());
+
+            CategoryRepo = repo;
         }
     }
 }

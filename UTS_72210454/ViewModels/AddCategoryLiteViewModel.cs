@@ -10,10 +10,10 @@ using UTS_72210454.Data;
 
 namespace UTS_72210454.ViewModels
 {
-    public partial class AddCategoryViewModel : ObservableObject
+    public partial class AddCategoryLiteViewModel : ObservableObject
     {
+        private readonly DatabaseHelper _databaseHelper;
 
-        private readonly ApiService _ApiService = new();
         [ObservableProperty]
         int _categoryId;
         [ObservableProperty]
@@ -21,34 +21,40 @@ namespace UTS_72210454.ViewModels
         [ObservableProperty]
         string _description;
 
-        public AddCategoryViewModel()
+        public AddCategoryLiteViewModel()
         {
-            _ApiService = new ApiService();
+            
         }
 
         [RelayCommand]
         async Task SaveData()
         {
-            
             if (CategoryId == 0)
             {
                 await insertCategory();
             }
-
             else
             {
                 await updateCategory();
             }
-                
         }
 
         [RelayCommand]
         async Task insertCategory()
         {
-            await _ApiService.addCategory(Name, Description);
-            WeakReferenceMessenger.Default.Send(new RefreshMessage(true));
-            await Shell.Current.GoToAsync("..");
+
+            try
+            {
+                await App.CategoryRepo.addCategoryAsync(Name, Description);
+                WeakReferenceMessenger.Default.Send(new RefreshMessage(true));
+                await Shell.Current.GoToAsync("..");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
+
         [RelayCommand]
         async Task updateCategory()
         {
@@ -59,33 +65,41 @@ namespace UTS_72210454.ViewModels
                 description = Description
             };
 
-            await _ApiService.UpdateCategory(category);
-            WeakReferenceMessenger.Default.Send(new RefreshMessage(true));
-            await Shell.Current.GoToAsync("..");
-        }
-        [RelayCommand]
-        async Task deleteCategory()
-        {
-
-            if (CategoryId == 0)
-                return;
-
             try
             {
-                await _ApiService.DeleteCategory(CategoryId);
+                await App.CategoryRepo.updateCategoryAsync(category);
                 WeakReferenceMessenger.Default.Send(new RefreshMessage(true));
                 await Shell.Current.GoToAsync("..");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error deleting category: {ex.Message}"); // Log the error
+                Console.WriteLine(ex.Message);
             }
-
         }
+
+        [RelayCommand]
+        async Task deleteCategory()
+        {
+            if (CategoryId == 0)
+                return;
+
+            try
+            {
+                await App.CategoryRepo.DeleteCategoryAsync(CategoryId);
+                WeakReferenceMessenger.Default.Send(new RefreshMessage(true));
+                await Shell.Current.GoToAsync("..");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
         [RelayCommand]
         async Task DoneEdit()
         {
             await Shell.Current.GoToAsync("..");
         }
+
     }
 }
