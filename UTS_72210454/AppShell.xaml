@@ -24,6 +24,9 @@
     <FlyoutItem Title="Category SQLite" Icon="wcat.png">
         <ShellContent ContentTemplate="{DataTemplate pages:CategoryLitePage}" />
     </FlyoutItem>
+    <FlyoutItem Title="Profile" Icon="wcat.png">
+        <ShellContent ContentTemplate="{DataTemplate pages:user}" />
+    </FlyoutItem>
 
     <TabBar>
         <Tab>

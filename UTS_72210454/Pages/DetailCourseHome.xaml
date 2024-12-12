@@ -51,6 +51,17 @@
                    LineBreakMode="WordWrap"
                    TextColor="Gray" />
 
+            <!-- Enroll Button -->
+            <Button Text="{Binding EnrollButtonText}"
+                BackgroundColor="MediumSeaGreen"
+                TextColor="White"
+                FontSize="18"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                Margin="0,20,0,0"
+                IsEnabled="{Binding CanEnroll}"
+                Command="{Binding EnrollCommand}" />
+
         </StackLayout>
     </ScrollView>
 </ContentPage>

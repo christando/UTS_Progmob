@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UTS_72210454.Pages.user"
+             xmlns:viewModel="clr-namespace:UTS_72210454.ViewModels"
+             x:DataType="viewModel:ProfileViewModel"
+             Title="user">
+    <Grid Padding="20" RowDefinitions="Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="Auto, *">
+        <!-- Username -->
+        <Label Grid.Row="0" Grid.Column="0" Text="Username:" FontAttributes="Bold" />
+        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Username}" />
+
+        <!-- Fullname -->
+        <Label Grid.Row="1" Grid.Column="0" Text="Fullname:" FontAttributes="Bold" />
+        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Fullname}" />
+
+        <!-- Email -->
+        <Label Grid.Row="2" Grid.Column="0" Text="Email:" FontAttributes="Bold" />
+        <Label Grid.Row="2" Grid.Column="1" Text="{Binding Email}" />
+
+    </Grid>
+</ContentPage>

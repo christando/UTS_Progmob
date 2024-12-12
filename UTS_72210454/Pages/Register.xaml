@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="UTS_72210454.Pages.LoginPage"
+             x:Class="UTS_72210454.Pages.Register"
              xmlns:style="clr-namespace:UTS_72210454"
-             Title="Login">
-    <Grid Padding="30" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="*,*" RowSpacing="15" ColumnSpacing="10">
+             Title="Register">
+    <Grid Padding="30" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" 
+          ColumnDefinitions="*,*" RowSpacing="15" ColumnSpacing="10">
 
-        <!-- Title -->
-        <Label Text="Login"
-               Grid.ColumnSpan="2"
+        <!-- Title Label -->
+        <Label Text="Register"
                FontSize="{x:Static Member=style:Style.LoginTitleFontSize}"
                HorizontalOptions="Center"
                VerticalOptions="Center"
-               Grid.Row="0" />
+               Grid.Row="0" Grid.ColumnSpan="2" />
 
         <!-- Email Label and Entry -->
         <Label Text="Email:"
@@ -21,38 +21,47 @@
                HorizontalOptions="End"
                Grid.Row="1" Grid.Column="0" />
         <Entry x:Name="emailEntry"
-               Placeholder="Enter your username"
+               Placeholder="Enter your email"
                FontSize="{x:Static Member=style:Style.LoginFontSize}"
                HorizontalOptions="FillAndExpand"
                Grid.Row="1" Grid.Column="1" />
+
+        <!-- Username Label and Entry -->
+        <Label Text="Username:"
+               FontSize="{x:Static Member=style:Style.LoginFontSize}"
+               VerticalOptions="Center"
+               HorizontalOptions="End"
+               Grid.Row="2" Grid.Column="0" />
+        <Entry x:Name="usernameEntry"
+               Placeholder="Enter your username"
+               FontSize="{x:Static Member=style:Style.LoginFontSize}"
+               HorizontalOptions="FillAndExpand"
+               Grid.Row="2" Grid.Column="1" />
 
         <!-- Password Label and Entry -->
         <Label Text="Password:"
                FontSize="{x:Static Member=style:Style.LoginFontSize}"
                VerticalOptions="Center"
                HorizontalOptions="End"
-               Grid.Row="2" Grid.Column="0" />
+               Grid.Row="3" Grid.Column="0" />
         <Entry x:Name="passwordEntry"
                Placeholder="Enter your password"
                FontSize="{x:Static Member=style:Style.LoginFontSize}"
                HorizontalOptions="FillAndExpand"
                IsPassword="True"
-               Grid.Row="2" Grid.Column="1" />
+               Grid.Row="3" Grid.Column="1" />
 
-        <!-- Login Button -->
-        <Button Text="Login"
-                FontSize="{x:Static Member=style:Style.LoginFontSize}"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                Clicked="OnLoginClicked"
-                Grid.Row="3" Grid.ColumnSpan="2" />
-
-        <!-- Or Label -->
-        <Label Text="Or"
+        <!-- Full Name Label and Entry -->
+        <Label Text="Full Name:"
                FontSize="{x:Static Member=style:Style.LoginFontSize}"
-               HorizontalOptions="Center"
                VerticalOptions="Center"
-               Grid.Row="4" Grid.ColumnSpan="2" />
+               HorizontalOptions="End"
+               Grid.Row="4" Grid.Column="0" />
+        <Entry x:Name="fullNameEntry"
+               Placeholder="Enter your full name"
+               FontSize="{x:Static Member=style:Style.LoginFontSize}"
+               HorizontalOptions="FillAndExpand"
+               Grid.Row="4" Grid.Column="1" />
 
         <!-- Register Button -->
         <Button Text="Register"
@@ -62,13 +71,28 @@
                 Clicked="OnRegisClicked"
                 Grid.Row="5" Grid.ColumnSpan="2" />
 
+        <!-- Or Label -->
+        <Label Text="Or"
+               FontSize="{x:Static Member=style:Style.LoginFontSize}"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Grid.Row="6" Grid.ColumnSpan="2" />
+
+        <!-- Login Button -->
+        <Button Text="Login"
+                FontSize="{x:Static Member=style:Style.LoginFontSize}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Clicked="OnLoginClicked"
+                Grid.Row="7" Grid.ColumnSpan="2" />
+
         <!-- Message Label -->
         <Label x:Name="MessageLabel"
                FontSize="{x:Static Member=style:Style.LoginWarningFontSize}"
                TextColor="{x:Static Member=style:Style.LoginWarningColor}"
                HorizontalOptions="Center"
                VerticalOptions="Center"
-               Grid.Row="6" Grid.ColumnSpan="2"
+               Grid.Row="8" Grid.ColumnSpan="2"
                IsVisible="False" />
     </Grid>
 </ContentPage>
